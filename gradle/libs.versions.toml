@@ -16,6 +16,7 @@ kotlin = "2.2.21"
 kotlinx-coroutines = "1.10.2"
 ktlint = "13.1.0"
 detekt = "2.0.0-alpha.1"
+moduleGraph = "2.9.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -39,3 +40,4 @@ composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "k
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 detekt = { id = "dev.detekt", version.ref = "detekt" }
+module-graph = { id = "com.jraska.module.graph.assertion", version.ref = "moduleGraph" }

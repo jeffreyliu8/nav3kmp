@@ -4,5 +4,5 @@ root = true
 ktlint_function_naming_ignore_when_annotated_with = Composable
 ktlint_code_style = android_studio
 
-[**/build/**/*.kt]
+[**/build/generated/**/*.kt]
 ktlint = disabled

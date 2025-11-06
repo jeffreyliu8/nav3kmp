@@ -1,0 +1,8 @@
+root = true
+
+[*.{kt,kts}]
+ktlint_function_naming_ignore_when_annotated_with = Composable
+ktlint_code_style = android_studio
+
+[**/build/**/*.kt]
+ktlint = disabled

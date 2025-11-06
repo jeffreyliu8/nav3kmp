@@ -1,6 +1,6 @@
 package com.jeffliu.nav3kmp
 
-class JsPlatform: Platform {
+class JsPlatform : Platform {
     override val name: String = "Web with Kotlin/JS"
 }
 

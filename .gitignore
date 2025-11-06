@@ -1,0 +1,7 @@
+/composeApp/build/
+/.kotlin/
+/.gradle/
+/.idea/
+/build/
+/kotlin-js-store/wasm/yarn.lock
+/local.properties

@@ -78,3 +78,9 @@ If you face any issues, please report them on [YouTrack](https://youtrack.jetbra
 ```shell
 ./gradlew ktlintFormat
 ```
+```shell
+./gradlew detekt
+```
+```shell
+./gradlew detektGenerateConfig
+```

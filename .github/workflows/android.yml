@@ -25,6 +25,8 @@ jobs:
     - name: ktlintCheck
       run: ./gradlew ktlintCheck
       continue-on-error: false
+    - name: detekt
+      run: ./gradlew detekt
     - name: Build debug with Gradle
       run: ./gradlew buildDebug
     - name: Build release with Gradle

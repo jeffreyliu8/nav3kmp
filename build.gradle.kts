@@ -10,6 +10,8 @@ plugins {
     alias(libs.plugins.ktlint) apply false
     alias(libs.plugins.detekt)
     alias(libs.plugins.module.graph) apply true // Plugin applied to allow module graph generation
+    alias(libs.plugins.android.kotlin.multiplatform.library) apply false
+    alias(libs.plugins.android.lint) apply false
 }
 
 subprojects {

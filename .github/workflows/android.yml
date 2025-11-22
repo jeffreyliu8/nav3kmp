@@ -35,3 +35,5 @@ jobs:
       run: ./gradlew test
     - name: Build with Gradle
       run: ./gradlew build
+    - name: Try browser jsBrowserDevelopmentRun
+      run: ./gradlew :composeApp:jsBrowserDevelopmentRun

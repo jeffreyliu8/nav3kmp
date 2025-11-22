@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.android.kotlin.multiplatform.library)
-    alias(libs.plugins.android.lint)
 
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)

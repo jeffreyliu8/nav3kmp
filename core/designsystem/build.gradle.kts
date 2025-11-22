@@ -43,6 +43,7 @@ kotlin {
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 api(compose.material3)
+                api(compose.material3AdaptiveNavigationSuite)
                 implementation(compose.ui)
                 api(compose.components.uiToolingPreview)
             }

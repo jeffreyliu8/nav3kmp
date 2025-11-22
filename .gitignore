@@ -3,6 +3,7 @@
 /.gradle/
 /.idea/
 /build/
+/core/build/
 /kotlin-js-store/yarn.lock
 /kotlin-js-store/wasm/yarn.lock
 /local.properties

@@ -46,3 +46,7 @@ private fun getDetektSourcePaths(): List<File> {
 
     return sourceDirs.filter { it.exists() }
 }
+
+moduleGraphAssert {
+    configurations += setOf("commonMainImplementation", "commonMainApi")
+}

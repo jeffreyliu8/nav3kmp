@@ -46,6 +46,9 @@ kotlin {
                 api(compose.material3AdaptiveNavigationSuite)
                 implementation(compose.ui)
                 api(compose.components.uiToolingPreview)
+
+                api(libs.nav3)
+                api(libs.material.icons.core)
             }
         }
     }

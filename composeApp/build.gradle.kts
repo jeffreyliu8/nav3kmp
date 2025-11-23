@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
+    alias(libs.plugins.kotlinxSerialization)
 }
 
 kotlin {
@@ -50,8 +51,13 @@ kotlin {
 
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.androidx.lifecycle.viewmodel.nav3)
 
+            implementation(projects.core.data)
             implementation(projects.core.designsystem)
+
+            implementation(libs.adaptive)
+            implementation(libs.adaptive.navigation)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

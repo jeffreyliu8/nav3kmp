@@ -33,4 +33,5 @@ plugins {
 }
 
 include(":composeApp")
+include(":core:data")
 include(":core:designsystem")

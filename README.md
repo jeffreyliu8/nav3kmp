@@ -84,3 +84,9 @@ If you face any issues, please report them on [YouTrack](https://youtrack.jetbra
 ```shell
 ./gradlew detektGenerateConfig
 ```
+
+![ComposeApp Module Graph](https://github.com/jeffreyliu8/nav3kmp/blob/main/docs/images/graphs/dep_graph_composeApp.svg)
+
+```shell
+./generateModuleGraphs.sh
+```

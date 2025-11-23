@@ -8,6 +8,7 @@ import io.ktor.client.request.get
 import io.ktor.client.request.headers
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
+import kotlin.coroutines.cancellation.CancellationException
 
 class SampleKtorRepositoryImpl(
     private val logger: LoggerRepository,
@@ -16,6 +17,7 @@ class SampleKtorRepositoryImpl(
 
     private val baseUrl = "https://api.github.com"
 
+    @Suppress("TooGenericExceptionCaught")
     override suspend fun searchGithubRepos(
         query: String,
         sort: String?,
@@ -36,6 +38,9 @@ class SampleKtorRepositoryImpl(
 
             Result.success(queryResult)
         } catch (e: Exception) {
+            if (e is CancellationException) {
+                throw e
+            }
             Logger.e("Error executing device action: ${e.message}")
             Result.failure(e)
         }

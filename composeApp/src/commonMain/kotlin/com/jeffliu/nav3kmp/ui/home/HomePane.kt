@@ -26,6 +26,7 @@ import org.koin.compose.viewmodel.koinViewModel
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
 @Preview
+@Suppress("LongMethod")
 fun HomePane(viewModel: HomePaneViewModel = koinViewModel()) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val scaffoldNavigator = rememberListDetailPaneScaffoldNavigator<String>()

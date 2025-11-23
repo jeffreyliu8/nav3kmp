@@ -51,5 +51,8 @@ kotlin {
                 api(libs.material.icons.core)
             }
         }
+        jvmMain.dependencies {
+            implementation(compose.desktop.currentOs)
+        }
     }
 }

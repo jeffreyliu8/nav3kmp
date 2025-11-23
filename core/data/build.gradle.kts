@@ -3,10 +3,7 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.android.kotlin.multiplatform.library)
-
-    alias(libs.plugins.composeMultiplatform)
-    alias(libs.plugins.composeCompiler)
-    alias(libs.plugins.composeHotReload)
+    alias(libs.plugins.kotlinxSerialization)
 }
 
 kotlin {
@@ -62,7 +59,6 @@ kotlin {
             }
         }
         jvmMain.dependencies {
-            implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutinesSwing)
             implementation(libs.ktor.client.cio)
         }

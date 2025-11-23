@@ -3,7 +3,6 @@ package com.jeffreyliu.core.data.model
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-
 @Serializable
 data class QueryResult(
     @SerialName("total_count")

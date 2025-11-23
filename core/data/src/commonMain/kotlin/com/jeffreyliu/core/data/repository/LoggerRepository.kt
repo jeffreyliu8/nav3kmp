@@ -1,6 +1,5 @@
 package com.jeffreyliu.core.data.repository
 
-
 interface LoggerRepository {
     fun v(message: String)
     fun d(message: String)

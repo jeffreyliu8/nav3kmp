@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.jeffreyliu.core.data.repository.LoggerRepository
 import com.jeffreyliu.core.data.repository.SampleRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.update
 
 class HomePaneViewModel(
     private val logger: LoggerRepository,
-    private val sampleRepository: SampleRepository,
+    private val sampleRepository: SampleRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(HomePaneUiState())
@@ -45,6 +45,4 @@ class HomePaneViewModel(
     }
 }
 
-data class HomePaneUiState(
-    val sampleInt: Int = 0,
-)
+data class HomePaneUiState(val sampleInt: Int = 0)

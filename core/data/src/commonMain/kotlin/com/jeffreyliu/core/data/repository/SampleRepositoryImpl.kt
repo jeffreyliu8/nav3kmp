@@ -5,8 +5,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-
-class SampleRepositoryImpl() : SampleRepository {
+class SampleRepositoryImpl : SampleRepository {
 
     override fun getIntFlow() = flow {
         var i = 0

@@ -8,8 +8,8 @@ import com.jeffreyliu.core.data.repository.SampleRepository
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 class MainViewModel(
     private val logger: LoggerRepository,
     private val sampleRepository: SampleRepository,
-    private val sampleKtorRepository: SampleKtorRepository,
+    private val sampleKtorRepository: SampleKtorRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(MainUiState())
@@ -64,5 +64,5 @@ class MainViewModel(
 
 data class MainUiState(
     val sampleInt: Int = 0,
-    val fakeList: ImmutableList<Int> = emptyList<Int>().toImmutableList(),
+    val fakeList: ImmutableList<Int> = emptyList<Int>().toImmutableList()
 )

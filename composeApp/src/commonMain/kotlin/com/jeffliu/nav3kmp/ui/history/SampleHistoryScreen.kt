@@ -9,9 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun SampleHistoryScreen(
-    modifier: Modifier = Modifier,
-) {
+fun SampleHistoryScreen(modifier: Modifier = Modifier) {
     Scaffold(modifier = modifier) { innerPadding ->
         Column {
             Button(

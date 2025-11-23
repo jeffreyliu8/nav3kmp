@@ -7,8 +7,7 @@ import com.jeffliu.nav3kmp.viewmodel.MainViewModel
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
-
-//expect val platformModule: Module
+// expect val platformModule: Module
 
 val appModule = module {
 

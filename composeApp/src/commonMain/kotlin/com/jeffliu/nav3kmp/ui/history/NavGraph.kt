@@ -2,10 +2,9 @@ package com.jeffliu.nav3kmp.ui.history
 
 import androidx.compose.runtime.Composable
 
-
 sealed class Screen(val route: String) {
-    data object Home: Screen(route = "home")
-    data object Detail: Screen(route = "detail")
+    data object Home : Screen(route = "home")
+    data object Detail : Screen(route = "detail")
 }
 
 @Composable

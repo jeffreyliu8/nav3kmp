@@ -26,9 +26,7 @@ import org.koin.compose.viewmodel.koinViewModel
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
 @Preview
-fun HomePane(
-    viewModel: HomePaneViewModel = koinViewModel(),
-) {
+fun HomePane(viewModel: HomePaneViewModel = koinViewModel()) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val scaffoldNavigator = rememberListDetailPaneScaffoldNavigator<String>()
     val selectedItemKey = scaffoldNavigator.currentDestination?.contentKey
@@ -49,7 +47,8 @@ fun HomePane(
                             Button(onClick = {
                                 scope.launch {
                                     scaffoldNavigator.navigateTo(
-                                        ListDetailPaneScaffoldRole.Detail, index.toString()
+                                        ListDetailPaneScaffoldRole.Detail,
+                                        index.toString()
                                     )
                                 }
                             }) {
@@ -63,12 +62,17 @@ fun HomePane(
                 if (selectedItemKey != null) {
                     AnimatedPane(modifier = Modifier) {
                         NavigationEventHandler(
-                            state = rememberNavigationEventState(currentInfo = NavigationEventInfo.None),
-                            isBackEnabled = scaffoldNavigator.currentDestination?.pane == ListDetailPaneScaffoldRole.Detail,
+                            state = rememberNavigationEventState(
+                                currentInfo = NavigationEventInfo.None
+                            ),
+                            isBackEnabled =
+                            scaffoldNavigator.currentDestination?.pane ==
+                                ListDetailPaneScaffoldRole.Detail
                         ) {
                             scope.launch {
                                 scaffoldNavigator.navigateTo(
-                                    ListDetailPaneScaffoldRole.List, null
+                                    ListDetailPaneScaffoldRole.List,
+                                    null
                                 )
                             }
                         }
@@ -84,7 +88,7 @@ fun HomePane(
                         }
                     }
                 }
-            },
+            }
         )
     }
 }

@@ -1,5 +1,11 @@
 package com.jeffreyliu.core.data.di
 
+import com.jeffreyliu.core.data.repository.LoggerRepository
+import com.jeffreyliu.core.data.repository.LoggerRepositoryImpl
+import com.jeffreyliu.core.data.repository.SampleKtorRepository
+import com.jeffreyliu.core.data.repository.SampleKtorRepositoryImpl
+import com.jeffreyliu.core.data.repository.SampleRepository
+import com.jeffreyliu.core.data.repository.SampleRepositoryImpl
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
@@ -8,15 +14,8 @@ import io.ktor.client.plugins.logging.Logging
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.koin.dsl.module
-import com.jeffreyliu.core.data.repository.LoggerRepository
-import com.jeffreyliu.core.data.repository.LoggerRepositoryImpl
-import com.jeffreyliu.core.data.repository.SampleKtorRepository
-import com.jeffreyliu.core.data.repository.SampleKtorRepositoryImpl
-import com.jeffreyliu.core.data.repository.SampleRepository
-import com.jeffreyliu.core.data.repository.SampleRepositoryImpl
 
-
-//expect val platformModule: Module
+// expect val platformModule: Module
 
 val sharedModule = module {
 //    singleOf(::AlarmControlRepository)
@@ -27,11 +26,13 @@ val sharedModule = module {
     single {
         HttpClient {
             install(ContentNegotiation) {
-                json(Json {
-                    prettyPrint = true
-                    isLenient = true
-                    ignoreUnknownKeys = true
-                })
+                json(
+                    Json {
+                        prettyPrint = true
+                        isLenient = true
+                        ignoreUnknownKeys = true
+                    }
+                )
             }
             install(Logging) {
                 logger = object : Logger {

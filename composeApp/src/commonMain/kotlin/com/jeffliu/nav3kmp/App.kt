@@ -20,19 +20,20 @@ import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import androidx.savedstate.serialization.SavedStateConfiguration
+import com.jeffliu.nav3kmp.ui.history.SampleHistoryScreen
 import com.jeffliu.nav3kmp.ui.home.HomePane
 import com.jeffliu.nav3kmp.ui.settings.SampleSettingScreen
 import com.jeffliu.nav3kmp.viewmodel.MainViewModel
@@ -50,7 +51,6 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
-import com.jeffliu.nav3kmp.ui.history.SampleHistoryScreen
 
 @Composable
 @Preview
@@ -69,7 +69,7 @@ private fun OldDefaultComposeContent() {
         modifier = Modifier
             .safeContentPadding()
             .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(onClick = { showContent = !showContent }) {
             Text("Click me!")
@@ -84,16 +84,11 @@ private fun OldDefaultComposeContent() {
     }
 }
 
-enum class AppDestinations(
-    val label: StringResource,
-    val icon: ImageVector,
-    val route: NavKey,
-) {
+enum class AppDestinations(val label: StringResource, val icon: ImageVector, val route: NavKey) {
     HOME(Res.string.main_screen_home, Icons.Default.Home, RouteA),
     HISTORY(Res.string.main_screen_history, Icons.Default.DateRange, RouteB),
-    SETTINGS(Res.string.main_screen_settings, Icons.Default.Settings, RouteC),
+    SETTINGS(Res.string.main_screen_settings, Icons.Default.Settings, RouteC)
 }
-
 
 @Serializable
 private data object RouteA : NavKey
@@ -115,9 +110,7 @@ private val config = SavedStateConfiguration {
 }
 
 @Composable
-fun MainScreen(
-    viewModel: MainViewModel = koinViewModel()
-) {
+fun MainScreen(viewModel: MainViewModel = koinViewModel()) {
     val topLevelBackStack = rememberNavBackStack(config, RouteA)
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -126,7 +119,7 @@ fun MainScreen(
         navigationBarItemColors = NavigationBarItemDefaults.colors(
             indicatorColor = MaterialTheme.colorScheme.primaryContainer,
             selectedIconColor = MaterialTheme.colorScheme.onPrimaryContainer
-        ),
+        )
     )
 
 //    val adaptiveInfo = currentWindowAdaptiveInfo()
@@ -146,13 +139,13 @@ fun MainScreen(
                     icon = {
                         Icon(
                             it.icon,
-                            contentDescription = stringResource(it.label),
+                            contentDescription = stringResource(it.label)
                         )
                     },
                     label = { Text(stringResource(it.label)) },
                     selected = it.route == topLevelBackStack.lastOrNull(),
                     onClick = { topLevelBackStack.add(it.route) },
-                    colors = myNavigationSuiteItemColors,
+                    colors = myNavigationSuiteItemColors
                 )
             }
         }
@@ -178,9 +171,9 @@ fun MainScreen(
                 entry<RouteC> {
                     SampleSettingScreen()
                 }
-            },
+            }
         )
     }
 }
 
-//https://github.com/terrakok/nav3-recipes/blob/6c7590c980898fe269484f6fda3800c45c46d7ee/composeApp/src/commonMain/kotlin/org/company/app/commonui/CommonUiCase.kt
+// https://github.com/terrakok/nav3-recipes/blob/6c7590c980898fe269484f6fda3800c45c46d7ee/composeApp/src/commonMain/kotlin/org/company/app/commonui/CommonUiCase.kt

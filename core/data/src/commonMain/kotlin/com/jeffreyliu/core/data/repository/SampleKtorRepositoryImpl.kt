@@ -1,18 +1,17 @@
 package com.jeffreyliu.core.data.repository
 
 import co.touchlab.kermit.Logger
+import com.jeffreyliu.core.data.model.QueryResult
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.headers
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
-import com.jeffreyliu.core.data.model.QueryResult
-
 
 class SampleKtorRepositoryImpl(
     private val logger: LoggerRepository,
-    private val client: HttpClient,
+    private val client: HttpClient
 ) : SampleKtorRepository {
 
     private val baseUrl = "https://api.github.com"

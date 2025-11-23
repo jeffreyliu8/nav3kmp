@@ -1,21 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="172pt" height="116pt" viewBox="0 0 172 116">
+<svg xmlns="http://www.w3.org/2000/svg" width="284pt" height="116pt" viewBox="0 0 284 116">
     <g class="graph" transform="translate(4 112)">
         <title>G</title>
-        <path fill="#fff" d="M-4 4v-116h172.12V4z"/>
+        <path fill="#fff" d="M-4 4v-116h284.32V4z"/>
         <g class="node">
             <title>:composeApp</title>
-            <ellipse cx="82.06" cy="-90" fill="none" stroke="#000" rx="62.61" ry="18"/>
-            <text xml:space="preserve" x="82.06" y="-84.95" font-family="Times,serif" font-size="14" text-anchor="middle">:composeApp</text>
+            <ellipse cx="120.26" cy="-90" fill="none" stroke="#000" rx="62.61" ry="18"/>
+            <text xml:space="preserve" x="120.26" y="-84.95" font-family="Times,serif" font-size="14" text-anchor="middle">:composeApp</text>
+        </g>
+        <g class="node">
+            <title>:core:data</title>
+            <ellipse cx="47.26" cy="-18" fill="none" stroke="#000" rx="47.26" ry="18"/>
+            <text xml:space="preserve" x="47.26" y="-12.95" font-family="Times,serif" font-size="14" text-anchor="middle">:core:data</text>
+        </g>
+        <g class="edge">
+            <title>:composeApp-&gt;:core:data</title>
+            <path fill="none" stroke="red" stroke-width="2" d="M102.96-72.41C93.8-63.63 82.39-52.69 72.28-43"/>
+            <path fill="red" stroke="red" stroke-width="2" d="m76.01-41.72-9.64 4.4 4.79-9.45z"/>
         </g>
         <g class="node">
             <title>:core:designsystem</title>
-            <ellipse cx="82.06" cy="-18" fill="none" stroke="#000" rx="82.06" ry="18"/>
-            <text xml:space="preserve" x="82.06" y="-12.95" font-family="Times,serif" font-size="14" text-anchor="middle">:core:designsystem</text>
+            <ellipse cx="194.26" cy="-18" fill="none" stroke="#000" rx="82.06" ry="18"/>
+            <text xml:space="preserve" x="194.26" y="-12.95" font-family="Times,serif" font-size="14" text-anchor="middle">:core:designsystem</text>
         </g>
         <g class="edge">
             <title>:composeApp-&gt;:core:designsystem</title>
-            <path fill="none" stroke="red" stroke-width="2" d="M82.06-71.7v24.16"/>
-            <path fill="red" stroke="red" stroke-width="2" d="m85.56-49.13-3.5 10-3.5-10z"/>
+            <path fill="none" stroke="#000" d="M137.79-72.41c9.09 8.59 20.36 19.25 30.43 28.78"/>
+            <path stroke="#000" d="m170.37-46.41 4.86 9.41-9.67-4.33z"/>
         </g>
     </g>
 </svg>

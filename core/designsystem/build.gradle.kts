@@ -6,7 +6,6 @@ plugins {
 
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-    alias(libs.plugins.composeHotReload)
 }
 
 kotlin {
@@ -40,12 +39,12 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation(compose.runtime)
-                implementation(compose.foundation)
-                api(compose.material3)
+                implementation(libs.compose.runtime)
+                implementation(libs.compose.foundation)
+                api(libs.compose.material3)
                 api(compose.material3AdaptiveNavigationSuite)
-                implementation(compose.ui)
-                api(compose.components.uiToolingPreview)
+                implementation(libs.compose.ui)
+                api(libs.compose.uiToolingPreview)
 
                 api(libs.nav3)
                 api(libs.material.icons.core)

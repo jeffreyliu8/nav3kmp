@@ -2,8 +2,12 @@ package com.jeffreyliu.core.data.repository
 
 import co.touchlab.kermit.Logger
 
-class LoggerRepositoryImpl : LoggerRepository {
+internal class LoggerRepositoryImpl : LoggerRepository {
     private val tag = "kmpLog"
+    override fun i(message: String) {
+        Logger.i(tag) { message }
+    }
+
     override fun v(message: String) {
         Logger.v(tag) { message }
     }

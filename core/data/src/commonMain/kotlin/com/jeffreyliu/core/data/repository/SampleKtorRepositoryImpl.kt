@@ -10,7 +10,7 @@ import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import kotlin.coroutines.cancellation.CancellationException
 
-class SampleKtorRepositoryImpl(
+internal class SampleKtorRepositoryImpl(
     private val logger: LoggerRepository,
     private val client: HttpClient
 ) : SampleKtorRepository {

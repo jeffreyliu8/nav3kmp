@@ -23,7 +23,7 @@ class MainViewModel(
     private val logger: LoggerRepository,
     private val sampleRepository: SampleRepository,
     private val sampleKtorRepository: SampleKtorRepository,
-    private val fruitRepository: FruitRepository,
+    private val fruitRepository: FruitRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(MainUiState())
@@ -55,7 +55,7 @@ class MainViewModel(
             .launchIn(viewModelScope)
 
         viewModelScope.launch {
-            while (true){
+            while (true) {
                 delay(1000)
                 fruitRepository.insert("test")
             }

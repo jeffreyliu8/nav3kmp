@@ -25,9 +25,11 @@ interface FruittieDao {
     suspend fun loadAll(ids: List<Long>): List<Fruittie>
 
     @Query("SELECT * FROM Fruittie WHERE id in (:ids)")
-    suspend fun loadMapped(ids: List<Long>): Map<
-            @MapColumn(columnName = "id")
-            Long,
-            Fruittie,
-            >
+    suspend fun loadMapped(
+        ids: List<Long>
+    ): Map<
+        @MapColumn(columnName = "id")
+        Long,
+        Fruittie
+        >
 }

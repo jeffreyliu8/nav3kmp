@@ -15,7 +15,7 @@ actual class Factory {
         val dbFile = "${fileDirectory()}/$DB_FILE_NAME"
         return Room
             .databaseBuilder<AppDatabase>(
-                name = dbFile,
+                name = dbFile
             ).setDriver(BundledSQLiteDriver())
             .setQueryCoroutineContext(Dispatchers.IO)
             .build()
@@ -33,7 +33,7 @@ actual class Factory {
             inDomain = NSUserDomainMask,
             appropriateForURL = null,
             create = false,
-            error = null,
+            error = null
         )
         return requireNotNull(documentDirectory).path!!
     }

@@ -14,5 +14,5 @@ data class Fruittie(
     @SerialName("full_name")
     val fullName: String,
     @SerialName("calories")
-    val calories: String,
+    val calories: String
 )

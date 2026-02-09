@@ -1,11 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="103pt" height="44pt" viewBox="0 0 103 44">
-    <g class="graph" transform="translate(4 40)">
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="116pt" viewBox="0 0 135 116">
+    <g class="graph" transform="translate(4 112)">
         <title>G</title>
-        <path fill="#fff" d="M-4 4v-44H98.51V4z"/>
+        <path fill="#fff" d="M-4 4v-116h135.27V4z"/>
         <g class="node">
             <title>:core:data</title>
-            <ellipse cx="47.26" cy="-18" fill="none" stroke="#000" rx="47.26" ry="18"/>
-            <text xml:space="preserve" x="47.26" y="-12.95" font-family="Times,serif" font-size="14" text-anchor="middle">:core:data</text>
+            <ellipse cx="63.63" cy="-90" fill="none" stroke="#000" rx="47.26" ry="18"/>
+            <text xml:space="preserve" x="63.63" y="-84.95" font-family="Times,serif" font-size="14" text-anchor="middle">:core:data</text>
+        </g>
+        <g class="node">
+            <title>:core:database</title>
+            <ellipse cx="63.63" cy="-18" fill="none" stroke="#000" rx="63.63" ry="18"/>
+            <text xml:space="preserve" x="63.63" y="-12.95" font-family="Times,serif" font-size="14" text-anchor="middle">:core:database</text>
+        </g>
+        <g class="edge">
+            <title>:core:data-&gt;:core:database</title>
+            <path fill="none" stroke="red" stroke-width="2" d="M63.63-71.7v24.16"/>
+            <path fill="red" stroke="red" stroke-width="2" d="m67.13-49.13-3.5 10-3.5-10z"/>
         </g>
     </g>
 </svg>

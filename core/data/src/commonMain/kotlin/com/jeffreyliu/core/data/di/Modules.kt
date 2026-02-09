@@ -1,11 +1,14 @@
 package com.jeffreyliu.core.data.di
 
+import com.jeffreyliu.core.data.repository.FruitRepository
+import com.jeffreyliu.core.data.repository.FruitRepositoryImpl
 import com.jeffreyliu.core.data.repository.LoggerRepository
 import com.jeffreyliu.core.data.repository.LoggerRepositoryImpl
 import com.jeffreyliu.core.data.repository.SampleKtorRepository
 import com.jeffreyliu.core.data.repository.SampleKtorRepositoryImpl
 import com.jeffreyliu.core.data.repository.SampleRepository
 import com.jeffreyliu.core.data.repository.SampleRepositoryImpl
+import com.jeffreyliu.database.di.dbSharedModule
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
@@ -18,6 +21,7 @@ import org.koin.dsl.module
 // expect val platformModule: Module
 
 val sharedModule = module {
+    includes(dbSharedModule)
 //    singleOf(::AlarmControlRepository)
 //    single<FirebaseDatabaseRepository> { FirebaseDatabaseRepositoryImpl() }
 //    single<DeviceActionRepository> { DeviceActionRepositoryImpl(get(), get(),get()) }
@@ -45,4 +49,6 @@ val sharedModule = module {
         }
     }
     single<SampleKtorRepository> { SampleKtorRepositoryImpl(get(), get()) }
+
+    single<FruitRepository> { FruitRepositoryImpl(get()) }
 }

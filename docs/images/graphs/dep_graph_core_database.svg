@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="44pt" viewBox="0 0 135 44">
+    <g class="graph" transform="translate(4 40)">
+        <title>G</title>
+        <path fill="#fff" d="M-4 4v-44h135.27V4z"/>
+        <g class="node">
+            <title>:core:database</title>
+            <ellipse cx="63.63" cy="-18" fill="none" stroke="#000" rx="63.63" ry="18"/>
+            <text xml:space="preserve" x="63.63" y="-12.95" font-family="Times,serif" font-size="14" text-anchor="middle">:core:database</text>
+        </g>
+    </g>
+</svg>

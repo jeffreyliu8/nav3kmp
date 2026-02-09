@@ -2,12 +2,14 @@ package com.jeffliu.nav3kmp.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jeffreyliu.core.data.repository.FruitRepository
 import com.jeffreyliu.core.data.repository.LoggerRepository
 import com.jeffreyliu.core.data.repository.SampleKtorRepository
 import com.jeffreyliu.core.data.repository.SampleRepository
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,7 +22,8 @@ import kotlinx.coroutines.launch
 class MainViewModel(
     private val logger: LoggerRepository,
     private val sampleRepository: SampleRepository,
-    private val sampleKtorRepository: SampleKtorRepository
+    private val sampleKtorRepository: SampleKtorRepository,
+    private val fruitRepository: FruitRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(MainUiState())
@@ -43,6 +46,20 @@ class MainViewModel(
             }
             .flowOn(Dispatchers.Default)
             .launchIn(viewModelScope)
+
+        fruitRepository.getAllFruits()
+            .onEach { history ->
+                logger.i("history count is ${history.size}")
+            }
+            .flowOn(Dispatchers.Default)
+            .launchIn(viewModelScope)
+
+        viewModelScope.launch {
+            while (true) {
+                delay(1000)
+                fruitRepository.insert("test")
+            }
+        }
     }
 
     private fun testMakeHttpRequest() {

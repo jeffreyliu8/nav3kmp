@@ -56,6 +56,7 @@ kotlin {
                 api(libs.kotlinx.collections.immutable)
 
                 implementation(projects.core.database)
+                implementation(projects.core.safe)
             }
         }
         jvmMain.dependencies {

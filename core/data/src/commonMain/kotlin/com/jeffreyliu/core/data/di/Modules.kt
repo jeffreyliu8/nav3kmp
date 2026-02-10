@@ -8,7 +8,10 @@ import com.jeffreyliu.core.data.repository.SampleKtorRepository
 import com.jeffreyliu.core.data.repository.SampleKtorRepositoryImpl
 import com.jeffreyliu.core.data.repository.SampleRepository
 import com.jeffreyliu.core.data.repository.SampleRepositoryImpl
+import com.jeffreyliu.core.data.repository.SharedPrefRepository
+import com.jeffreyliu.core.data.repository.SharedPrefRepositoryImpl
 import com.jeffreyliu.database.di.dbSharedModule
+import com.jeffreyliu.safepref.di.kSafeSharedModule
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
@@ -22,6 +25,7 @@ import org.koin.dsl.module
 
 val sharedModule = module {
     includes(dbSharedModule)
+    includes(kSafeSharedModule)
 //    singleOf(::AlarmControlRepository)
 //    single<FirebaseDatabaseRepository> { FirebaseDatabaseRepositoryImpl() }
 //    single<DeviceActionRepository> { DeviceActionRepositoryImpl(get(), get(),get()) }
@@ -51,4 +55,6 @@ val sharedModule = module {
     single<SampleKtorRepository> { SampleKtorRepositoryImpl(get(), get()) }
 
     single<FruitRepository> { FruitRepositoryImpl(get()) }
+
+    single<SharedPrefRepository> { SharedPrefRepositoryImpl(get()) }
 }

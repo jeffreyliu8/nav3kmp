@@ -6,6 +6,8 @@ import com.jeffreyliu.core.data.repository.FruitRepository
 import com.jeffreyliu.core.data.repository.LoggerRepository
 import com.jeffreyliu.core.data.repository.SampleKtorRepository
 import com.jeffreyliu.core.data.repository.SampleRepository
+import com.jeffreyliu.core.data.repository.SharedPrefRepository
+import kotlin.random.Random
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.Dispatchers
@@ -23,7 +25,8 @@ class MainViewModel(
     private val logger: LoggerRepository,
     private val sampleRepository: SampleRepository,
     private val sampleKtorRepository: SampleKtorRepository,
-    private val fruitRepository: FruitRepository
+    private val fruitRepository: FruitRepository,
+    private val sharedPrefRepository: SharedPrefRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(MainUiState())
@@ -54,10 +57,18 @@ class MainViewModel(
             .flowOn(Dispatchers.Default)
             .launchIn(viewModelScope)
 
+        sharedPrefRepository.getUserProfile()
+            .onEach {
+                logger.i("user string is $it")
+            }
+            .flowOn(Dispatchers.Default)
+            .launchIn(viewModelScope)
+
         viewModelScope.launch {
             while (true) {
                 delay(1000)
                 fruitRepository.insert("test")
+                sharedPrefRepository.saveUserProfile(Random.nextInt().toString())
             }
         }
     }

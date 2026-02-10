@@ -12,7 +12,6 @@ internal class SharedPrefRepositoryImpl(private val kSafe: KSafe) : SharedPrefRe
         kSafe.put(SHARED_PREF_KEY_USER_PROFILE, message)
     }
 
-    override fun getUserProfile(): Flow<String> {
-        return kSafe.getFlow(SHARED_PREF_KEY_USER_PROFILE, "", encrypted = true)
-    }
+    override fun getUserProfile(): Flow<String> =
+        kSafe.getFlow(SHARED_PREF_KEY_USER_PROFILE, "", encrypted = true)
 }

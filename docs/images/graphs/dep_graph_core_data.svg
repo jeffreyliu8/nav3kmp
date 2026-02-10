@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="180" height="116pt" viewBox="0 0 135 116">
+<svg xmlns="http://www.w3.org/2000/svg" width="328" height="116pt" viewBox="0 0 246 116">
     <g class="graph" transform="translate(4 112)">
         <title>G</title>
-        <path fill="#fff" d="M-4 4v-116h135.27V4z"/>
+        <path fill="#fff" d="M-4 4v-116h246.38V4z"/>
         <g class="node">
             <title>:core:data</title>
-            <ellipse cx="63.63" cy="-90" fill="none" stroke="#000" rx="47.26" ry="18"/>
-            <text xml:space="preserve" x="63.63" y="-84.95" font-family="Times,serif" font-size="14" text-anchor="middle">:core:data</text>
+            <ellipse cx="127.63" cy="-90" fill="none" stroke="#000" rx="47.26" ry="18"/>
+            <text xml:space="preserve" x="127.63" y="-84.95" font-family="Times,serif" font-size="14" text-anchor="middle">:core:data</text>
         </g>
         <g class="node">
             <title>:core:database</title>
@@ -14,8 +14,18 @@
         </g>
         <g class="edge">
             <title>:core:data-&gt;:core:database</title>
-            <path fill="none" stroke="red" stroke-width="2" d="M63.63-71.7v24.16"/>
-            <path fill="red" stroke="red" stroke-width="2" d="m67.13-49.13-3.5 10-3.5-10z"/>
+            <path fill="none" stroke="red" stroke-width="2" d="M112.79-72.76c-7.8 8.53-17.54 19.18-26.28 28.74"/>
+            <path fill="red" stroke="red" stroke-width="2" d="m90.22-42.89-9.33 5.02 4.16-9.74z"/>
+        </g>
+        <g class="node">
+            <title>:core:safe</title>
+            <ellipse cx="191.63" cy="-18" fill="none" stroke="#000" rx="46.75" ry="18"/>
+            <text xml:space="preserve" x="191.63" y="-12.95" font-family="Times,serif" font-size="14" text-anchor="middle">:core:safe</text>
+        </g>
+        <g class="edge">
+            <title>:core:data-&gt;:core:safe</title>
+            <path fill="none" stroke="#000" d="M142.48-72.76c7.91 8.65 17.82 19.49 26.66 29.16"/>
+            <path stroke="#000" d="m171.69-46.01 4.16 9.75-9.33-5.02z"/>
         </g>
     </g>
 </svg>

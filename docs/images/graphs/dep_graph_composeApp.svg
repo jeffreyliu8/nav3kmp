@@ -1,31 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="301pt" height="188pt" viewBox="0 0 301 188">
+<svg xmlns="http://www.w3.org/2000/svg" width="365pt" height="188pt" viewBox="0 0 365 188">
     <g class="graph" transform="translate(4 184)">
         <title>G</title>
-        <path fill="#fff" d="M-4 4v-188h300.69V4z"/>
+        <path fill="#fff" d="M-4 4v-188h364.69V4z"/>
         <g class="node">
             <title>:composeApp</title>
-            <ellipse cx="136.63" cy="-162" fill="none" stroke="#000" rx="62.61" ry="18"/>
-            <text xml:space="preserve" x="136.63" y="-156.95" font-family="Times,serif" font-size="14" text-anchor="middle">:composeApp</text>
+            <ellipse cx="200.63" cy="-162" fill="none" stroke="#000" rx="62.61" ry="18"/>
+            <text xml:space="preserve" x="200.63" y="-156.95" font-family="Times,serif" font-size="14" text-anchor="middle">:composeApp</text>
         </g>
         <g class="node">
             <title>:core:data</title>
-            <ellipse cx="63.63" cy="-90" fill="none" stroke="#000" rx="47.26" ry="18"/>
-            <text xml:space="preserve" x="63.63" y="-84.95" font-family="Times,serif" font-size="14" text-anchor="middle">:core:data</text>
+            <ellipse cx="127.63" cy="-90" fill="none" stroke="#000" rx="47.26" ry="18"/>
+            <text xml:space="preserve" x="127.63" y="-84.95" font-family="Times,serif" font-size="14" text-anchor="middle">:core:data</text>
         </g>
         <g class="edge">
             <title>:composeApp-&gt;:core:data</title>
-            <path fill="none" stroke="red" stroke-width="2" d="M119.33-144.41c-9.15 8.78-20.56 19.72-30.67 29.41"/>
-            <path fill="red" stroke="red" stroke-width="2" d="m92.38-113.72-9.64 4.4 4.8-9.45z"/>
+            <path fill="none" stroke="red" stroke-width="2" d="M183.33-144.41c-9.15 8.78-20.56 19.72-30.67 29.41"/>
+            <path fill="red" stroke="red" stroke-width="2" d="m156.38-113.72-9.64 4.4 4.8-9.45z"/>
         </g>
         <g class="node">
             <title>:core:designsystem</title>
-            <ellipse cx="210.63" cy="-90" fill="none" stroke="#000" rx="82.06" ry="18"/>
-            <text xml:space="preserve" x="210.63" y="-84.95" font-family="Times,serif" font-size="14" text-anchor="middle">:core:designsystem</text>
+            <ellipse cx="274.63" cy="-90" fill="none" stroke="#000" rx="82.06" ry="18"/>
+            <text xml:space="preserve" x="274.63" y="-84.95" font-family="Times,serif" font-size="14" text-anchor="middle">:core:designsystem</text>
         </g>
         <g class="edge">
             <title>:composeApp-&gt;:core:designsystem</title>
-            <path fill="none" stroke="#000" d="M154.17-144.41c9.08 8.59 20.35 19.25 30.43 28.78"/>
-            <path stroke="#000" d="m186.75-118.41 4.86 9.41-9.67-4.33z"/>
+            <path fill="none" stroke="#000" d="M218.17-144.41c9.08 8.59 20.35 19.25 30.43 28.78"/>
+            <path stroke="#000" d="m250.75-118.41 4.86 9.41-9.67-4.33z"/>
         </g>
         <g class="node">
             <title>:core:database</title>
@@ -34,8 +34,18 @@
         </g>
         <g class="edge">
             <title>:core:data-&gt;:core:database</title>
-            <path fill="none" stroke="red" stroke-width="2" d="M63.63-71.7v24.16"/>
-            <path fill="red" stroke="red" stroke-width="2" d="m67.13-49.13-3.5 10-3.5-10z"/>
+            <path fill="none" stroke="red" stroke-width="2" d="M112.79-72.76c-7.8 8.53-17.54 19.18-26.28 28.74"/>
+            <path fill="red" stroke="red" stroke-width="2" d="m90.22-42.89-9.33 5.02 4.16-9.74z"/>
+        </g>
+        <g class="node">
+            <title>:core:safe</title>
+            <ellipse cx="191.63" cy="-18" fill="none" stroke="#000" rx="46.75" ry="18"/>
+            <text xml:space="preserve" x="191.63" y="-12.95" font-family="Times,serif" font-size="14" text-anchor="middle">:core:safe</text>
+        </g>
+        <g class="edge">
+            <title>:core:data-&gt;:core:safe</title>
+            <path fill="none" stroke="#000" d="M142.48-72.76c7.91 8.65 17.82 19.49 26.66 29.16"/>
+            <path stroke="#000" d="m171.69-46.01 4.16 9.75-9.33-5.02z"/>
         </g>
     </g>
 </svg>

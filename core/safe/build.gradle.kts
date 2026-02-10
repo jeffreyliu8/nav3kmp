@@ -41,9 +41,6 @@ kotlin {
                 implementation(libs.koin.core)
 
                 api(libs.ksafe)
-//                implementation("eu.anifantakis:ksafe-compose:1.5.0") // ← Compose state (optional)
-
-
 
                 implementation(libs.kotlinx.serialization.json)
             }

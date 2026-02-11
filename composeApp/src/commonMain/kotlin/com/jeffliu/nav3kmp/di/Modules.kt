@@ -5,7 +5,7 @@ import com.jeffliu.nav3kmp.viewmodel.HomePaneViewModel
 import com.jeffliu.nav3kmp.viewmodel.HomeViewModel
 import com.jeffliu.nav3kmp.viewmodel.MainViewModel
 import org.koin.dsl.module
-import org.koin.plugin.module.dsl.*
+import org.koin.plugin.module.dsl.viewModel
 
 // expect val platformModule: Module
 

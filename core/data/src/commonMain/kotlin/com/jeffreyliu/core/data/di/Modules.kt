@@ -19,18 +19,18 @@ import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
+import org.koin.dsl.bind
 import org.koin.dsl.module
+import org.koin.plugin.module.dsl.single
 
 // expect val platformModule: Module
 
 val sharedModule = module {
     includes(dbSharedModule)
     includes(kSafeSharedModule)
-//    singleOf(::AlarmControlRepository)
-//    single<FirebaseDatabaseRepository> { FirebaseDatabaseRepositoryImpl() }
-//    single<DeviceActionRepository> { DeviceActionRepositoryImpl(get(), get(),get()) }
-    single<SampleRepository> { SampleRepositoryImpl() }
-    single<LoggerRepository> { LoggerRepositoryImpl() }
+
+    single<SampleRepositoryImpl>() bind SampleRepository::class
+    single<LoggerRepositoryImpl>() bind LoggerRepository::class
     single {
         HttpClient {
             install(ContentNegotiation) {
@@ -52,9 +52,9 @@ val sharedModule = module {
             }
         }
     }
-    single<SampleKtorRepository> { SampleKtorRepositoryImpl(get(), get()) }
+    single<SampleKtorRepositoryImpl>() bind SampleKtorRepository::class
 
-    single<FruitRepository> { FruitRepositoryImpl(get()) }
+    single<FruitRepositoryImpl>() bind FruitRepository::class
 
-    single<SharedPrefRepository> { SharedPrefRepositoryImpl(get()) }
+    single<SharedPrefRepositoryImpl>() bind SharedPrefRepository::class
 }

@@ -1,9 +1,8 @@
-import org.gradle.kotlin.dsl.dependencies
-
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.kotlinxSerialization)
+    alias(libs.plugins.koin.compiler)
 }
 
 kotlin {

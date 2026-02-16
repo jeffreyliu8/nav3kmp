@@ -19,32 +19,6 @@ subprojects {
     }
 }
 
-
-allprojects {
-    apply(plugin = "dev.detekt")
-    detekt {
-        buildUponDefaultConfig = true
-        config.setFrom(files("${rootProject.projectDir}/detekt/detekt-config.yml"))
-        source.setFrom(getDetektSourcePaths())
-    }
-}
-
-private fun getDetektSourcePaths(): List<File> {
-    val sourceDirs = mutableListOf<File>()
-
-    subprojects.forEach {
-        sourceDirs.add(file("${it.projectDir}/src/commonMain/kotlin"))
-        sourceDirs.add(file("${it.projectDir}/src/androidMain/kotlin"))
-        sourceDirs.add(file("${it.projectDir}/src/iosMain/kotlin"))
-        sourceDirs.add(file("${it.projectDir}/src/jsMain/kotlin"))
-        sourceDirs.add(file("${it.projectDir}/src/jvmMain/kotlin"))
-        sourceDirs.add(file("${it.projectDir}/src/wasmJsMain/kotlin"))
-        sourceDirs.add(file("${it.projectDir}/src/webMain/kotlin"))
-    }
-
-    return sourceDirs.filter { it.exists() }
-}
-
 moduleGraphAssert {
     configurations += setOf("commonMainImplementation", "commonMainApi")
 }

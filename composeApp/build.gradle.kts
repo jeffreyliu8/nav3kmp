@@ -1,20 +1,21 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinxSerialization)
     alias(libs.plugins.koin.compiler)
+    alias(libs.plugins.detekt)
 }
 
 kotlin {
-    androidTarget {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_17)
-        }
+    androidLibrary {
+        compileSdk = libs.versions.android.compileSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        namespace = "com.jeffliu.nav3kmp"
+        experimentalProperties["android.experimental.kmp.enableAndroidResources"] = true
     }
 
     listOf(
@@ -42,8 +43,8 @@ kotlin {
 
     sourceSets {
         androidMain.dependencies {
-            implementation(libs.compose.uiToolingPreview)
-            implementation(libs.androidx.activity.compose)
+            api(libs.compose.uiToolingPreview)
+            api(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
             implementation(libs.compose.components.resources)
@@ -64,40 +65,40 @@ kotlin {
     }
 }
 
-android {
-    namespace = "com.jeffliu.nav3kmp"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
-
-    defaultConfig {
-        applicationId = "com.jeffliu.nav3kmp"
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-}
-
-dependencies {
-    debugImplementation(libs.compose.uiTooling)
-}
+// android {
+//    namespace = "com.jeffliu.nav3kmp"
+//    compileSdk = libs.versions.android.compileSdk.get().toInt()
+//
+//    defaultConfig {
+//        applicationId = "com.jeffliu.nav3kmp"
+//        minSdk = libs.versions.android.minSdk.get().toInt()
+//        targetSdk = libs.versions.android.targetSdk.get().toInt()
+//        versionCode = 1
+//        versionName = "1.0"
+//    }
+//    packaging {
+//        resources {
+//            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+//        }
+//    }
+//    buildTypes {
+//        getByName("release") {
+//            isMinifyEnabled = true
+//            proguardFiles(
+//                getDefaultProguardFile("proguard-android-optimize.txt"),
+//                "proguard-rules.pro"
+//            )
+//        }
+//    }
+//    compileOptions {
+//        sourceCompatibility = JavaVersion.VERSION_17
+//        targetCompatibility = JavaVersion.VERSION_17
+//    }
+// }
+//
+// dependencies {
+//    debugImplementation(libs.compose.uiTooling)
+// }
 
 compose.desktop {
     application {
@@ -108,5 +109,14 @@ compose.desktop {
             packageName = "com.jeffliu.nav3kmp"
             packageVersion = "1.0.0"
         }
+    }
+}
+
+allprojects {
+    apply(plugin = "dev.detekt")
+    detekt {
+        toolVersion = "2.0.0-alpha.2"
+        config.setFrom(files("${rootProject.projectDir}/detekt/detekt-config.yml"))
+        buildUponDefaultConfig = true
     }
 }

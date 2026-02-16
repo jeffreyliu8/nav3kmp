@@ -8,17 +8,17 @@ plugins {
     alias(libs.plugins.composeCompiler) apply false
     alias(libs.plugins.kotlinMultiplatform) apply false
     alias(libs.plugins.kotlinxSerialization) apply false
-//    alias(libs.plugins.ktlint) apply false
+    alias(libs.plugins.ktlint) apply false
 //    alias(libs.plugins.detekt)
 //    alias(libs.plugins.module.graph) apply true // Plugin applied to allow module graph generation
 }
 
-//subprojects {
-//    apply(plugin = "org.jlleitschuh.gradle.ktlint")
-//    configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
-//        debug.set(true)
-//    }
-//}
+subprojects {
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
+    configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+        debug.set(true)
+    }
+}
 //
 //
 //allprojects {

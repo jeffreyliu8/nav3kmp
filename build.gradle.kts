@@ -9,8 +9,8 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform) apply false
     alias(libs.plugins.kotlinxSerialization) apply false
     alias(libs.plugins.ktlint) apply false
-//    alias(libs.plugins.detekt)
-//    alias(libs.plugins.module.graph) apply true // Plugin applied to allow module graph generation
+    alias(libs.plugins.detekt)
+    alias(libs.plugins.module.graph) apply true // Plugin applied to allow module graph generation
 }
 
 subprojects {
@@ -19,8 +19,8 @@ subprojects {
         debug.set(true)
     }
 }
-//
-//
+
+
 //allprojects {
 //    apply(plugin = "dev.detekt")
 //    detekt {
@@ -29,7 +29,7 @@ subprojects {
 //        source.setFrom(getDetektSourcePaths())
 //    }
 //}
-
+//
 //private fun getDetektSourcePaths(): List<File> {
 //    val sourceDirs = mutableListOf<File>()
 //
@@ -46,6 +46,6 @@ subprojects {
 //    return sourceDirs.filter { it.exists() }
 //}
 
-//moduleGraphAssert {
-//    configurations += setOf("commonMainImplementation", "commonMainApi")
-//}
+moduleGraphAssert {
+    configurations += setOf("commonMainImplementation", "commonMainApi")
+}

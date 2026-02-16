@@ -64,7 +64,7 @@ kotlin {
     }
 }
 
-//android {
+// android {
 //    namespace = "com.jeffliu.nav3kmp"
 //    compileSdk = libs.versions.android.compileSdk.get().toInt()
 //
@@ -93,11 +93,11 @@ kotlin {
 //        sourceCompatibility = JavaVersion.VERSION_17
 //        targetCompatibility = JavaVersion.VERSION_17
 //    }
-//}
+// }
 //
-//dependencies {
+// dependencies {
 //    debugImplementation(libs.compose.uiTooling)
-//}
+// }
 
 compose.desktop {
     application {

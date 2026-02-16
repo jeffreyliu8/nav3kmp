@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinxSerialization)
     alias(libs.plugins.koin.compiler)
+    alias(libs.plugins.detekt)
 }
 
 kotlin {
@@ -108,5 +109,14 @@ compose.desktop {
             packageName = "com.jeffliu.nav3kmp"
             packageVersion = "1.0.0"
         }
+    }
+}
+
+allprojects {
+    apply(plugin = "dev.detekt")
+    detekt {
+        toolVersion = "2.0.0-alpha.2"
+        config.setFrom(files("${rootProject.projectDir}/detekt/detekt-config.yml"))
+        buildUponDefaultConfig = true
     }
 }

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.detekt)
 }
 
 android {
@@ -44,4 +45,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.testExt.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+detekt {
+    toolVersion = "2.0.0-alpha.2"
+    config.setFrom(files("${rootProject.projectDir}/detekt/detekt-config.yml"))
+    buildUponDefaultConfig = true
 }

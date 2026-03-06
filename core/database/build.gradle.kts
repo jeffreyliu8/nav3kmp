@@ -12,7 +12,7 @@ plugins {
 kotlin {
     compilerOptions.freeCompilerArgs.add("-Xexpect-actual-classes")
 
-    androidLibrary {
+    android {
         namespace = "com.jeffreyliu.database"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()

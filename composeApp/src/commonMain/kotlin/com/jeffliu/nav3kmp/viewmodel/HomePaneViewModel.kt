@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
-
 import org.koin.core.annotation.KoinViewModel
 
 @KoinViewModel

@@ -15,7 +15,7 @@ val appModule = module {
 //    viewModel<MainViewModel>()
 //
 //    viewModel<HomeViewModel>()
-//    viewModel<DetailViewModel>()
+//    viewModel<DetailViewModel>() //was used in 0.3.0
 
     viewModel { HomePaneViewModel(get(), get()) }
     viewModel { MainViewModel(get(), get(), get(), get(), get()) }

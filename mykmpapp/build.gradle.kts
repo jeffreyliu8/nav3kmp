@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.koin.compiler)
     alias(libs.plugins.detekt)
 }
 
@@ -39,6 +40,8 @@ dependencies {
     implementation(projects.composeApp)
 
     implementation(project.dependencies.platform(libs.koin.bom))
+    implementation(libs.koin.core)
+    implementation(libs.koin.annotations)
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
 

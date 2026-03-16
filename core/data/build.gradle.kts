@@ -43,6 +43,7 @@ kotlin {
             dependencies {
                 api(project.dependencies.platform(libs.koin.bom))
                 api(libs.koin.core)
+                api(libs.koin.annotations)
                 api(libs.koin.compose)
                 api(libs.koin.compose.viewmodel)
 

@@ -4,16 +4,21 @@ import com.jeffliu.nav3kmp.viewmodel.DetailViewModel
 import com.jeffliu.nav3kmp.viewmodel.HomePaneViewModel
 import com.jeffliu.nav3kmp.viewmodel.HomeViewModel
 import com.jeffliu.nav3kmp.viewmodel.MainViewModel
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
-import org.koin.plugin.module.dsl.viewModel
 
 // expect val platformModule: Module
 
 val appModule = module {
 
-    viewModel<HomePaneViewModel>()
-    viewModel<MainViewModel>()
+//    viewModel<HomePaneViewModel>()
+//    viewModel<MainViewModel>()
+//
+//    viewModel<HomeViewModel>()
+//    viewModel<DetailViewModel>()
 
-    viewModel<HomeViewModel>()
-    viewModel<DetailViewModel>()
+    viewModel { HomePaneViewModel(get(), get()) }
+    viewModel { MainViewModel(get(), get(), get(), get(), get()) }
+    viewModel { HomeViewModel(get()) }
+    viewModel { DetailViewModel(get()) }
 }

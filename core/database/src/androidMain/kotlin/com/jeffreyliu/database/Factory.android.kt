@@ -1,7 +1,7 @@
 package com.jeffreyliu.database
 
 import android.app.Application
-import androidx.room.Room
+import androidx.room3.Room
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import kotlinx.coroutines.Dispatchers
 

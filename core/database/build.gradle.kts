@@ -31,9 +31,9 @@ kotlin {
 
     jvm()
 
-    js {
-        browser()
-    }
+//    js {
+//        browser()
+//    }
 
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
@@ -51,17 +51,17 @@ kotlin {
                 implementation(libs.kotlinx.serialization.json)
             }
         }
-        androidMain{
+        androidMain {
             dependencies {
                 implementation(libs.sqlite.bundled)
             }
         }
-        iosMain{
+        iosMain {
             dependencies {
                 implementation(libs.sqlite.bundled)
             }
         }
-        jvmMain{
+        jvmMain {
             dependencies {
                 implementation(libs.sqlite.bundled)
             }
@@ -84,6 +84,6 @@ dependencies {
     add("kspIosArm64", libs.room.compiler)
     add("kspIosSimulatorArm64", libs.room.compiler)
     add("kspJvm", libs.room.compiler)
-    add("kspJs", libs.room.compiler)
+//    add("kspJs", libs.room.compiler)
     add("kspWasmJs", libs.room.compiler)
 }

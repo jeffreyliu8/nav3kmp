@@ -1,4 +1,5 @@
 import org.gradle.kotlin.dsl.dependencies
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -33,11 +34,11 @@ kotlin {
 //    js {
 //        browser()
 //    }
-//
-//    @OptIn(ExperimentalWasmDsl::class)
-//    wasmJs {
-//        browser()
-//    }
+
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser()
+    }
 
     sourceSets {
         commonMain {
@@ -46,14 +47,34 @@ kotlin {
                 implementation(libs.koin.core)
 
                 implementation(libs.room.runtime)
-                implementation(libs.sqlite.bundled)
+//                implementation(libs.sqlite.bundled)
                 implementation(libs.kotlinx.serialization.json)
+            }
+        }
+        androidMain {
+            dependencies {
+                implementation(libs.sqlite.bundled)
+            }
+        }
+        iosMain {
+            dependencies {
+                implementation(libs.sqlite.bundled)
+            }
+        }
+        jvmMain {
+            dependencies {
+                implementation(libs.sqlite.bundled)
+            }
+        }
+        webMain {
+            dependencies {
+                implementation(libs.sqlite.web)
             }
         }
     }
 }
 
-room {
+room3 {
     schemaDirectory("$projectDir/schemas")
 }
 
@@ -63,4 +84,6 @@ dependencies {
     add("kspIosArm64", libs.room.compiler)
     add("kspIosSimulatorArm64", libs.room.compiler)
     add("kspJvm", libs.room.compiler)
+//    add("kspJs", libs.room.compiler)
+    add("kspWasmJs", libs.room.compiler)
 }

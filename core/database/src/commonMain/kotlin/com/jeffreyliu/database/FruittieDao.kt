@@ -1,10 +1,10 @@
 package com.jeffreyliu.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.MapColumn
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room3.Dao
+import androidx.room3.Insert
+import androidx.room3.MapColumn
+import androidx.room3.OnConflictStrategy
+import androidx.room3.Query
 import kotlinx.coroutines.flow.Flow
 
 @Dao

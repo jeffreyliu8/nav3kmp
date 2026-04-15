@@ -68,7 +68,12 @@ kotlin {
         }
         webMain {
             dependencies {
+//                https://github.com/danysantiago/room-web-demo/blob/main/sqliteWasmWorker/build.gradle.kts
+                implementation(libs.kotlinx.browser)
                 implementation(libs.sqlite.web)
+                implementation(
+                    npm("sqlite-wasm-worker", layout.projectDirectory.dir("worker").asFile)
+                )
             }
         }
     }

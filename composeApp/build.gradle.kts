@@ -64,6 +64,9 @@ kotlin {
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
+        wasmJsMain.dependencies {
+            implementation(libs.ksafe)
+        }
     }
 }
 

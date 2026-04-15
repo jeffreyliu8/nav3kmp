@@ -11,7 +11,6 @@ import com.jeffliu.nav3kmp.di.initKoin
 import eu.anifantakis.lib.ksafe.KSafe
 import org.koin.mp.KoinPlatform.getKoin
 
-
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {
     initKoin()

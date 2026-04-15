@@ -1,10 +1,10 @@
-import initSqlJs from 'sql.js';
+import sqlite3InitModule from '@sqlite.org/sqlite-wasm';
 
-let SQL = null;
+let sqlite3 = null;
 
-// Maps to track active database connections and prepared statements by their unique IDs.
-const databases = new Map(); // stores databaseId -> SQL.Database
-const statements = new Map(); // stores statementId -> SQL.Statement
+// Maps to track of active database connections and prepared statements by their unique IDs.
+const databases = new Map(); // stores databaseId -> SQLiteDbObject
+const statements = new Map(); // stores statementId -> SQLiteStatementObject
 
 // Counters to generate unique IDs for new database connections and statements.
 let nextDatabaseId = 0;
@@ -13,11 +13,7 @@ let nextStatementId = 0;
 function openRequest(id, requestData) {
     try {
         const newDatabaseId = nextDatabaseId++;
-
-        // sql.js operates in-memory by default. If you want to load from requestData.fileName,
-        // you would normally fetch the file as an ArrayBuffer and pass it here:
-        // new SQL.Database(new Uint8Array(buffer));
-        const newDatabase = new SQL.Database();
+        const newDatabase = new sqlite3.oo1.OpfsDb(requestData.fileName);
         databases.set(newDatabaseId, newDatabase);
         postMessage({'id': id, data: {'databaseId': newDatabaseId}});
     } catch (error) {
@@ -28,6 +24,11 @@ function openRequest(id, requestData) {
 function prepareRequest(id, requestData) {
     try {
         const newStatementId = nextStatementId++;
+        const resultData = {
+            'statementId': newStatementId,
+            'parameterCount': 0,
+            'columnNames': []
+        };
         const database = databases.get(requestData.databaseId);
         if (!database) {
             postMessage({'id': id, error: "Invalid database ID: " + requestData.databaseId});
@@ -35,14 +36,10 @@ function prepareRequest(id, requestData) {
         }
         const statement = database.prepare(requestData.sql);
         statements.set(newStatementId, statement);
-
-        const resultData = {
-            'statementId': newStatementId,
-            // sql.js doesn't expose bind_parameter_count easily, defaulting to a big number
-            'parameterCount': 256,
-            'columnNames': statement.getColumnNames()
-        };
-
+        resultData.parameterCount = sqlite3.capi.sqlite3_bind_parameter_count(statement);
+        for (let i = 0; i < statement.columnCount; i++) {
+            resultData.columnNames.push(sqlite3.capi.sqlite3_column_name(statement, i));
+        }
         postMessage({'id': id, data: resultData});
     } catch (error) {
         postMessage({'id': id, error: error.message});
@@ -55,46 +52,24 @@ function stepRequest(id, requestData) {
         postMessage({'id': id, error: "Invalid statement ID: " + requestData.statementId});
         return;
     }
-
     try {
         const resultData = {
             'rows': [],
             'columnTypes': []
         };
-
-        // Reset the statement state so we can bind new parameters and execute again
-        statement.reset();
-
-        if (requestData.bindings && requestData.bindings.length > 0) {
-            statement.bind(requestData.bindings);
+        statement.reset()
+        statement.clearBindings()
+        for (let i = 0; i < requestData.bindings.length; i++) {
+            statement.bind(i + 1, requestData.bindings[i]);
         }
-
         while (statement.step()) {
-            const row = statement.get();
-
-            // sql.js doesn't expose sqlite3_column_type. We infer the types
-            // from the first row's JavaScript values.
-            // 1=INTEGER, 2=FLOAT, 3=TEXT, 4=BLOB, 5=NULL
-            if (resultData.columnTypes.length === 0) {
-                for (let i = 0; i < row.length; i++) {
-                    const val = row[i];
-                    if (val === null) {
-                        resultData.columnTypes.push(5);
-                    } else if (typeof val === 'number') {
-                        resultData.columnTypes.push(Number.isInteger(val) ? 1 : 2);
-                    } else if (typeof val === 'string') {
-                        resultData.columnTypes.push(3);
-                    } else if (val instanceof Uint8Array) {
-                        resultData.columnTypes.push(4);
-                    } else {
-                        resultData.columnTypes.push(5); // fallback
-                    }
+            if (!resultData.columnTypes.length) {
+                for (let i = 0; i < statement.columnCount; i++) {
+                    resultData.columnTypes.push(sqlite3.capi.sqlite3_column_type(statement, i));
                 }
             }
-
-            resultData.rows.push(row);
+            resultData.rows.push(statement.get([]));
         }
-
         postMessage({'id': id, data: resultData});
     } catch (error) {
         postMessage({'id': id, error: error.message});
@@ -102,23 +77,23 @@ function stepRequest(id, requestData) {
 }
 
 function closeRequest(id, requestData) {
-    if (requestData.statementId !== undefined && requestData.statementId != null) {
+    if (requestData.statementId) {
         const statement = statements.get(requestData.statementId);
-        if (statement == null) {
+        if (!statement) {
             postMessage({'id': id, error: "Invalid statement ID: " + requestData.statementId});
             return;
         }
         try {
-            statement.free(); // sql.js uses free() instead of finalize()
+            statement.finalize();
             statements.delete(requestData.statementId);
         } catch (error) {
             postMessage({'id': id, error: error.message});
         }
     }
 
-    if (requestData.databaseId !== undefined && requestData.databaseId != null) {
+    if (requestData.databaseId) {
         const database = databases.get(requestData.databaseId);
-        if (database == null) {
+        if (!database) {
             postMessage({'id': id, error: "Invalid database ID: " + requestData.databaseId});
             return;
         }
@@ -143,11 +118,15 @@ function handleMessage(e) {
     const requestMsg = e.data;
     console.log("handleMessage: " + JSON.stringify(requestMsg));
     if (!Object.hasOwn(requestMsg, 'data') && requestMsg.data == null) {
-        postMessage({'id': requestMsg.id, 'error': "Invalid request, missing 'data'."});
+        postMessage(
+            {'id': requestMsg.id, 'error': "Invalid request, missing 'data'."}
+        );
         return;
     }
     if (!Object.hasOwn(requestMsg.data, 'cmd') && requestMsg.data.cmd == null) {
-        postMessage({'id': requestMsg.id, 'error': "Invalid request, missing 'cmd'."});
+        postMessage(
+            {'id': requestMsg.id, 'error': "Invalid request, missing 'cmd'."}
+        );
         return;
     }
     const command = requestMsg.data.cmd;
@@ -155,26 +134,23 @@ function handleMessage(e) {
     if (requestHandler) {
         requestHandler(requestMsg.id, requestMsg.data);
     } else {
-        postMessage({'id': requestMsg.id, 'error': "Invalid request, unknown command: '" + command + "'."});
+        postMessage(
+            {'id': requestMsg.id, 'error': "Invalid request, unknown command: '" + command + "'."}
+        );
     }
 }
 
-// Queue messages that arrive before sql.js has finished initializing
 const messageQueue = [];
 onmessage = (e) => {
-    if (!SQL) {
+    if (!sqlite3) {
         messageQueue.push(e);
     } else {
         handleMessage(e);
     }
 };
 
-// Initialize sql.js. Depending on your build system, you may need to specify
-// the `locateFile` option to point to the sql-wasm.wasm file.
-initSqlJs({
-    locateFile: file => 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.13.0/sql-wasm.wasm'
-}).then(instance => {
-    SQL = instance;
+sqlite3InitModule().then(instance => {
+    sqlite3 = instance;
     while (messageQueue.length > 0) {
         handleMessage(messageQueue.shift());
     }

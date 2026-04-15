@@ -1,8 +1,8 @@
 {
-  "name": "sql-js-web-worker",
+  "name": "sqlite-wasm-worker",
   "version": "0.0.0",
   "license": "APACHE-2.0",
   "dependencies": {
-    "sql.js": "1.14.0"
+    "@sqlite.org/sqlite-wasm": "^3.50.1-build1"
   }
 }

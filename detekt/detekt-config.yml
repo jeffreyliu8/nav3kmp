@@ -374,6 +374,7 @@ naming:
     privatePropertyPattern: '(_)?[A-Za-z][_A-Za-z0-9]*'
   PackageNaming:
     active: true
+    excludes: ['**/build/**']
     aliases: ['PackageName']
     packagePattern: '[a-z]+(\.[a-z][A-Za-z0-9]*)*'
   TopLevelPropertyNaming:
@@ -691,6 +692,7 @@ style:
     maxChainedCalls: 5
   MaxLineLength:
     active: true
+    excludes: ['**/build/**']
     maxLineLength: 120
     excludePackageStatements: true
     excludeImportStatements: true
@@ -746,7 +748,7 @@ style:
     active: true
   SerialVersionUIDInSerializableClass:
     active: true
-  SpacingAfterPackageDeclaration:
+  SpacingAfterPackageAndImports:
     active: false
   StringShouldBeRawString:
     active: false

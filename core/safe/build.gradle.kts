@@ -12,6 +12,7 @@ kotlin {
         namespace = "com.jeffreyliu.datasafe"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
+        withHostTest {}
     }
 
     val xcfName = "datasafeKit"

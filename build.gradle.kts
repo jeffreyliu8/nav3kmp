@@ -17,6 +17,12 @@ subprojects {
     configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
         debug.set(true)
     }
+
+    apply(plugin = "dev.detekt")
+    detekt {
+        config.setFrom(files("${rootProject.projectDir}/detekt/detekt-config.yml"))
+        buildUponDefaultConfig = true
+    }
 }
 
 moduleGraphAssert {

@@ -17,6 +17,7 @@ kotlin {
         minSdk = libs.versions.android.minSdk.get().toInt()
         namespace = "com.jeffliu.nav3kmp"
         experimentalProperties["android.experimental.kmp.enableAndroidResources"] = true
+        withHostTest {}
     }
 
     listOf(
@@ -114,14 +115,5 @@ compose.desktop {
             packageName = "com.jeffliu.nav3kmp"
             packageVersion = "1.0.0"
         }
-    }
-}
-
-allprojects {
-    apply(plugin = "dev.detekt")
-    detekt {
-        toolVersion = "2.0.0-alpha.2"
-        config.setFrom(files("${rootProject.projectDir}/detekt/detekt-config.yml"))
-        buildUponDefaultConfig = true
     }
 }

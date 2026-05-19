@@ -9,6 +9,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.window.ComposeViewport
 import com.jeffliu.nav3kmp.di.initKoin
 import eu.anifantakis.lib.ksafe.KSafe
+import eu.anifantakis.lib.ksafe.awaitCacheReady
 import org.koin.mp.KoinPlatform.getKoin
 
 @OptIn(ExperimentalComposeUiApi::class)

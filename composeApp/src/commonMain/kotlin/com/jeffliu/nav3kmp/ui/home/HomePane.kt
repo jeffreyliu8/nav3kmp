@@ -16,9 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigationevent.NavigationEventInfo
-import androidx.navigationevent.compose.NavigationEventHandler
-import androidx.navigationevent.compose.rememberNavigationEventState
 import com.jeffliu.nav3kmp.viewmodel.HomePaneViewModel
 import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinViewModel
@@ -62,21 +59,21 @@ fun HomePane(viewModel: HomePaneViewModel = koinViewModel()) {
             detailPane = {
                 if (selectedItemKey != null) {
                     AnimatedPane(modifier = Modifier) {
-                        NavigationEventHandler(
-                            state = rememberNavigationEventState(
-                                currentInfo = NavigationEventInfo.None
-                            ),
-                            isBackEnabled =
-                            scaffoldNavigator.currentDestination?.pane ==
-                                ListDetailPaneScaffoldRole.Detail
-                        ) {
-                            scope.launch {
-                                scaffoldNavigator.navigateTo(
-                                    ListDetailPaneScaffoldRole.List,
-                                    null
-                                )
-                            }
-                        }
+//                        NavigationEventHandler(
+//                            state = rememberNavigationEventState(
+//                                currentInfo = NavigationEventInfo.None
+//                            ),
+//                            isBackEnabled =
+//                            scaffoldNavigator.currentDestination?.pane ==
+//                                ListDetailPaneScaffoldRole.Detail
+//                        ) {
+//                            scope.launch {
+//                                scaffoldNavigator.navigateTo(
+//                                    ListDetailPaneScaffoldRole.List,
+//                                    null
+//                                )
+//                            }
+//                        }
                         LazyColumn(
                             contentPadding = innerPadding
                         ) {

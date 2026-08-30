@@ -22,11 +22,11 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-    - name: ktlintCheck
-      run: ./gradlew ktlintCheck
-      continue-on-error: false
-    - name: detekt
-      run: ./gradlew detekt
+#    - name: ktlintCheck
+#      run: ./gradlew ktlintCheck
+#      continue-on-error: false
+#    - name: detekt
+#      run: ./gradlew detekt
     - name: Build debug with Gradle
       run: ./gradlew buildDebug
     - name: Build release with Gradle

@@ -54,7 +54,7 @@ val sharedModule = module {
     }
     single<SampleKtorRepositoryImpl>() bind SampleKtorRepository::class
 
-    single<FruitRepositoryImpl>() bind FruitRepository::class
+    single { FruitRepositoryImpl(get()) } bind FruitRepository::class
 
-    single<SharedPrefRepositoryImpl>() bind SharedPrefRepository::class
+    single { SharedPrefRepositoryImpl(get()) } bind SharedPrefRepository::class
 }

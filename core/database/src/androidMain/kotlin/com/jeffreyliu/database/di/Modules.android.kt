@@ -6,5 +6,5 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 actual val dbPlatformModule: Module = module {
-    single<AppDatabase?> { Factory(get()).createRoomDatabase() }
+    single<AppDatabase> { Factory(get()).createRoomDatabase() }
 }
